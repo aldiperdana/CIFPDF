@@ -14,8 +14,10 @@ class Latihan1 extends BaseController
         $pdf = new FPDF('L', 'mm','Letter');
         $pdf->AddPage();
         $pdf->SetFont('Arial','B',16);
-        $pdf->Cell(0,0,'Hello World',0,1,'L');  
-        $pdf->Cell(100,100,'Title',0,1,'C');      
+
+        // $pdf->Cell(width,height,'TEXT',0,1,'C');
+        $pdf->Cell(0,7,'DAFTAR PEGAWAI AYONGODING.COM',0,1,'C');
+        $pdf->Cell(20,10,'Title',1,1,'C');
         $pdf->Output();
 	}
 }
