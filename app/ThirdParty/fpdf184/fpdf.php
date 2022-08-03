@@ -169,6 +169,48 @@ function __construct($orientation='P', $unit='mm', $size='A4')
 	$this->PDFVersion = '1.3';
 }
 
+	function Header_()
+        {
+            
+            // Logo
+            $this->Image('logo.png',10,6,30);
+            // Arial bold 15
+            $this->SetFont('Arial','B',15);
+            // Move to the right
+            $this->Cell(80);
+            // Title
+            $this->Cell(30,10,'Title',1,0,'C');
+            // Line break
+            $this->Ln(20);
+        }
+
+    // Page footer
+    function Footer_()
+        {
+            // Position at 1.5 cm from bottom
+            $this->SetY(-15);
+            // Arial italic 8
+            $this->SetFont('Arial','I',8);
+            // Page number
+            $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+        }
+
+function createTable($header,$data){
+      
+	$this->SetFont('Arial','B',12);
+	foreach($header as $h){
+	  $this->Cell(60,7,$h,1);
+	}
+	$this->Ln();
+	$this->SetFont('Arial','',12);
+	foreach($data as $row){
+	  foreach($row as $col){
+		$this->Cell(60,7,$col,1);
+	  }
+	  $this->Ln();
+	}
+}
+
 function SetMargins($left, $top, $right=null)
 {
 	// Set left, top and right margins
